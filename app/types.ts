@@ -23,3 +23,8 @@ export type PokemonCardData = {
   image: string;
   types: string[];
 };
+
+export type PokemonSearchData = {
+  id: number;
+  name: string;
+};

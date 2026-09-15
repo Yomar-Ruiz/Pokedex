@@ -16,3 +16,10 @@ export type Pokemon = {
   };
   types: PokemonTypeSlot[];
 };
+
+export type PokemonCardData = {
+  id: number;
+  name: string;
+  image: string;
+  types: string[];
+};

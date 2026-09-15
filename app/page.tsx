@@ -1,6 +1,4 @@
-import PokemonCard from "./components/PokemonCard";
 import type { Pokemon } from "./types";
-import SearchBar from "./components/SearchBar";
 import PokemonList from "./components/PokemonList";
 
 export default async function Home() {
@@ -12,21 +10,26 @@ export default async function Home() {
 
       const pokemon: Pokemon = await response.json();
 
-      return pokemon;
+      return {
+        id: pokemon.id,
+        name: pokemon.name,
+        image: pokemon.sprites.front_default,
+        types: pokemon.types.map((typeInfo) => typeInfo.type.name),
+      };
     })
   );
 
   return (
     <main className="min-h-screen bg-gray-100 p-6 sm:p-10">
-     <h1 className="mb-2 text-center text-4xl font-extrabold text-red-600 sm:text-5xl">
-       Pokédex de Kanto
-     </h1>
+      <h1 className="mb-2 text-center text-4xl font-extrabold text-red-600 sm:text-5xl">
+        Pokédex de Kanto
+      </h1>
 
-     <p className="mb-8 text-center text-gray-600">
-       Explora los 151 Pokémon originales de Kanto
-     </p>
+      <p className="mb-8 text-center text-gray-600">
+        Explora los 151 Pokémon originales de Kanto
+      </p>
 
-     <PokemonList pokemonList={pokemonList} />
-   </main>
-)
+      <PokemonList pokemonList={pokemonList} />
+    </main>
+  );
 }
